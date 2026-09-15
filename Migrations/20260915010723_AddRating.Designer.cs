@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcMovie.Data;
 
@@ -10,9 +11,11 @@ using MvcMovie.Data;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    partial class MvcMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20260915010723_AddRating")]
+    partial class AddRating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.31");
@@ -24,23 +27,18 @@ namespace MvcMovie.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Rating")
-                        .HasMaxLength(5)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
